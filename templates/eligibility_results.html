@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+
+      In Network Applied: {{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("applied").get("amount") }} </br>
+      In Network Limit: {{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("limit").get("amount") }} </br>
+      In Network Remaining: {{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("remaining").get("amount") }} </br>
+
+{% endblock %}

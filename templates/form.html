@@ -1,0 +1,42 @@
+{% extends "eligibility.html" %}
+ 
+{% block forms %}
+
+  {% for message in form.first_name.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% for message in form.last_name.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% for message in form.birth_date.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% for message in form.id.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% for message in form.trading_partner_id.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  <form action="{{ url_for('eligibility') }}" method=post>
+    {{ form.hidden_tag() }}
+ 
+    {{ form.first_name.label }}
+    {{ form.first_name }}
+ 
+    {{ form.last_name.label }}
+    {{ form.last_name }}
+ 
+    {{ form.birth_date.label }}
+    {{ form.birth_date }}
+
+    {{ form.id.label }}
+    {{ form.id }}
+
+    {{ form.trading_partner_id.label }}
+    {{ form.trading_partner_id }}
+ 
+    {{ form.submit }}
+  </form>
+
+{% endblock %}
