@@ -1,14 +1,15 @@
 __author__ = 'g-rock'
 
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, session
 from form import ContactForm
 from json2html import *
+
 
 import pokitdok
 
 app = Flask(__name__)
 
-app.secret_key = 'cant wait for dinner'
+app.secret_key = '1i\xb3\xcd\x01R\x81\x89&1S,\t\xa3\xf7\xbej\xe1\xf8\xda\xdb\x87\xc8\xe4'
 
 
 @app.route('/')
@@ -35,11 +36,17 @@ def eligibility():
                 },
                 "trading_partner_id": form.trading_partner_id.data
             })
-
+            html = json2html.convert(json=json_file)
+            session['var'] = html
             return render_template('eligibility_results.html', json=json_file)
 
     elif request.method == 'GET':
         return render_template('form.html', form=form)
+
+@app.route('/eligibility/summary')
+def summary():
+    html_summary = session.get('var', None)
+    return render_template('full_summary.html', html=html_summary)
 
 
 if __name__ == '__main__':
