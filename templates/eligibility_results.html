@@ -1,9 +1,17 @@
 {% extends "layout.html" %}
  
 {% block content %}
+      <h2>Individual</h2>
 
-      In Network Applied: {{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("applied").get("amount") }} </br>
-      In Network Limit: {{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("limit").get("amount") }} </br>
-      In Network Remaining: {{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("remaining").get("amount") }} </br>
+      In Network Applied: ${{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("applied").get("amount") }} </br>
+      In Network Limit: ${{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("limit").get("amount") }} </br>
+      In Network Remaining: ${{ json.get("data").get("summary").get("deductible").get("individual").get("in_network").get("remaining").get("amount") }} </br>
+      </br>
+      Out of Network Applied: ${{json.get("data").get("summary").get("deductible").get("individual").get("out_of_network").get("applied").get("amount") }} <br/>
+      Out of Network Limit: ${{json.get("data").get("summary").get("deductible").get("individual").get("out_of_network").get("limit").get("amount") }} <br/>
+      Out of Network Remaining: ${{json.get("data").get("summary").get("deductible").get("individual").get("out_of_network").get("remaining").get("amount") }} <br/>
+      </br>
+      <a href="/eligibility/summary">Click here for full eligibility summary</a>
+
 
 {% endblock %}
